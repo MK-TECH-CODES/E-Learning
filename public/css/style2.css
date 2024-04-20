@@ -1,0 +1,72 @@
+.c1 {
+    width: 1000px; /* Set full width by default */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(44, 26, 26, 0.1);
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="file"] {
+    width: calc(100% - 20px); /* Adjusting width */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+    .c1 {
+        width: 80%; /* Adjust width for smaller screens */
+    }
+    input[type="text"],
+    input[type="file"] {
+        width: calc(100% - 20px); /* Adjusting width */
+    }
+}
+.card {
+    width: 100%; /* Set full width for the card */
+}
+
+@media (min-width: 992px) {
+    .c1 {
+        max-width: 50%; /* Limit width on large screens */
+    }
+}
+
+.custom-file-input::-webkit-file-upload-button {
+    background-color: #007bff; /* Change to desired color */
+    color: #fff;
+    border: none;
+    margin: 0.5px;
+    margin-right: 0.5px;
+    padding: 0.375rem 0.75rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Course Player</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #333;
+      }
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .video-section,
+      .section-list {
+        box-sizing: border-box;
+        padding: 0px 20px;
+        position: relative;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+      }
+      .video {
+        width: 100%;
+        height: 100%;
+        border-radius: 8px;
+      }
+      .description {
+        margin-top: 20px;
+      }
+      .section-list {
+        width: 50%; /* Extend section list width till the end of the screen */
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .section-list h2 {
+        margin-top: 0;
+      }
+      .section-list ul {
+        list-style-type: none;
+        padding: 0;
+        overflow-y: auto; /* Add scrollbar if content exceeds height */
+        max-height: 500px; /* Define maximum height */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+        -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer/Edge */
+      }
+      .section-list ul::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Chrome/Safari/Opera */
+      }
+      .section-list ul li {
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        padding: 10px; /* Increased padding for better hover effect */
+        border-radius: 4px; /* Added border radius for better appearance */
+      }
+      .section-list ul li:hover,
+      .current-section {
+        background-color: #dcf2f1; /* Change to desired hover background color */
+      }
+    </style>
+  </head>
+  <body>
+    <h2 style="padding-left: 20px; color: #fff">Data science</h2>
+    <div class="container">
+      <div
+        class="video-section"
+        id="video-section"
+        style="width: 45%; height: 100%"
+      >
+        <video class="video" controls controlsList="nodownload" autoplay>
+          <source
+            src="https://videos.pexels.com/video-files/20325563/20325563-sd_640_360_30fps.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+
+        <div class="description">
+          <h2>Video 1</h2>
+          <p>Description of Video 1 goes here.</p>
+        </div>
+      </div>
+      <div class="section-list" id="section-list">
+        <h2>Sections</h2>
+        <ul style="width: 100%; height: 400px; border: 1px solid #6c6c6c61">
+          <li
+            class="current-section"
+            onclick="changeVideo('https:/videos.pexels.com/video-files/20325563/20325563-sd_640_360_30fps.mp4', 'Description of Video 1 goes here.', this)"
+          >
+            Section 1
+            <div class="description">
+              <p>Description of Section 1 goes here.</p>
+            </div>
+          </li>
+          <% for(let i = 0;i<videodata.length;i++){%>
+          <li
+            onclick="changeVideo('<%=videodata[i].links%>', '<%= videodata[i].description%>', this)"
+          >
+            <%=videodata[i].section%>
+            <div class="description">
+              <p>DESCRIPTION : <%=videodata[i].description%></p>
+            </div>
+          </li>
+          
+          <% } %>
+        </ul>
+          
+        
+      </div>
+      <div style="padding: 20px; background-color: #fff">
+        <h3>About the Course</h3>
+        <p>
+          This data science course covers essential concepts and techniques for
+          analyzing large datasets and extracting valuable insights. Through a
+          combination of lectures, hands-on exercises, and real-world projects,
+          you will learn how to use various data science tools and technologies
+          to solve complex problems.
+        </p>
+        <h3>About the Author</h3>
+        <p>
+          John Doe is a seasoned data scientist with over 10 years of experience
+          in the field. He has worked on numerous projects across industries
+          such as finance, healthcare, and e-commerce. John is passionate about
+          sharing his knowledge and helping others succeed in the field of data
+          science.
+        </p>
+        <h3>Key Features</h3>
+        <ul>
+          <li>Comprehensive coverage of data science fundamentals</li>
+          <li>Hands-on learning with real-world datasets</li>
+          <li>Expert guidance from industry professionals</li>
+          <li>Interactive exercises and quizzes</li>
+          <li>Access to course materials and resources</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      function changeVideo(videoSrc, description, clickedSection) {
+        var video = document.querySelector(".container video");
+        video.src = videoSrc;
+        video.play();
+        var videoDescription = document.querySelector(
+          ".container .description"
+        );
+        videoDescription.innerHTML =
+          "<h2>Playing Video Description</h2><p>" + description + "</p>";
+
+        var currentSection = document.querySelector(".current-section");
+        currentSection.classList.remove("current-section");
+        clickedSection.classList.add("current-section");
+      }
+    </script>
+  </body>
+</html>
